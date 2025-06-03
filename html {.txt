@@ -1,0 +1,565 @@
+html {
+    scroll-behavior: smooth;
+    /* Enable smooth scrolling */
+}
+
+/* Basic Reset and Body Styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Modern, clean font stack */
+    background-color: #f4f4f4;
+    /* Light background for the page */
+    color: #333;
+    /* Default text color */
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    /* Enables flexbox layout */
+    justify-content: space-between;
+    /* Pushes nav-left and nav-right to opposite ends */
+    align-items: center;
+    /* Vertically aligns items in the center */
+    background-color: #200c33;
+    /* A modern, dark slate blue */
+    padding: 1rem 2.5rem;
+    /* 1rem top/bottom, 2.5rem left/right padding */
+    color: white;
+    /* Default text color for items inside nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    position: sticky;
+    /* Make navbar sticky */
+    top: 0;
+    z-index: 1000;
+    /* Ensure navbar stays on top of other content */
+}
+
+/* Left side of the Navbar (Logo/Web Name) */
+/* .nav-left {
+
+} */
+
+.web-name {
+    font-size: 1.8rem;
+    /* Larger font size for the name */
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Common modern styling for brand names */
+    letter-spacing: 1px;
+    /* Adds a bit of spacing between letters */
+    
+    /* A light, almost white color */
+}
+
+.web-name a {
+    text-decoration: none;
+    color: #ecf0f1;
+}
+
+/* Right side of the Navbar (Navigation Links) */
+.nav-right ul {
+    list-style: none;
+    /* Removes default bullet points from the list */
+    margin: 0;
+    /* Removes default margin */
+    padding: 0;
+    /* Removes default padding */
+    display: flex;
+    /* Aligns list items in a row */
+}
+
+.nav-right li {
+    margin-left: 25px;
+    /* Spacing between navigation items */
+}
+
+.nav-right li:first-child {
+    margin-left: 0;
+    /* No left margin for the first item */
+}
+
+.nav-right a {
+    text-decoration: none;
+    /* Removes underline from links */
+    color: #ecf0f1;
+    /* Light color for links, matching web-name */
+    font-size: 1rem;
+    /* Standard font size for nav links */
+    padding: 0.5rem 0;
+    /* Padding for easier clicking, only top/bottom to not affect underline */
+    position: relative;
+    /* Needed for the ::after pseudo-element positioning */
+    transition: color 0.3s ease;
+    /* Smooth transition for text color change */
+}
+
+/* Modern hover effect: underline grows from left */
+.nav-right a::after {
+    content: '';
+    /* Necessary for pseudo-elements to show */
+    position: absolute;
+    width: 0;
+    /* Starts with no width */
+    height: 2px;
+    /* Thickness of the underline */
+    bottom: -2px;
+    /* Position below the text */
+    left: 0;
+    background-color: #3498db;
+    /* A bright accent color for the underline */
+    transition: width 0.3s ease;
+    /* Smooth transition for width change */
+}
+
+.nav-right a:hover {
+    color: #3498db;
+    /* Change text color on hover to match the underline */
+}
+
+.nav-right a:hover::after {
+    width: 100%;
+    /* Underline expands to full width on hover */
+}
+
+
+.nav-right a.active {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.nav-right a.active::after {
+    width: 100%;
+}
+
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+    /* Centered content column with max width */
+    /* grid-template-rows: repeat(6, auto); Remove fixed rows, let content define height */
+    gap: 20px;
+    padding-top: 80px;
+    /* Space for sticky navbar (approx 3.8rem + buffer) */
+    padding-left: 20px;
+    /* Side padding for the page */
+    padding-right: 20px;
+    padding-bottom: 40px;
+    /* Bottom padding for the page */
+}
+
+/* General styling for direct children sections within main-content for a card-like look */
+.main-content>div[class] {
+    /* Targets .Projects, .Certificate etc. */
+    grid-column: 2 / 3;
+    /* Make all sections occupy the central column */
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    margin-bottom: 25px;
+    /* Space between stacked sections */
+    scroll-margin-top: 80px;
+}
+
+.main-content>div[class]:last-child {
+    margin-bottom: 0;
+}
+
+/* Hero Section (section-2) Styling */
+.section-2 {
+    display: flex;
+    align-items: center;
+    /* Vertically align content */
+    gap: 40px;
+    /* Space between left and right grids */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+    /* Inherits background, padding, border-radius, box-shadow from .main-content > div[class] */
+}
+
+.section-2 .left-grid {
+    flex: 2;
+    /* Takes up more space, e.g., 66% */
+    min-width: 300px;
+    /* Minimum width before wrapping or shrinking too much */
+}
+
+.section-2 .left-grid p:first-child {
+    /* "Hello, I'm" */
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 0.25rem;
+    /* Reduced margin */
+    margin-top: 0;
+}
+
+.section-2 .left-grid h1 {
+    font-size: 2.8rem;
+    /* Prominent heading */
+    color: #200c33;
+    /* Dark purple, consistent with navbar */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.section-2 .left-grid p:last-of-type {
+    /* Description paragraph */
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 0;
+}
+
+.section-2 .right-grid {
+    flex: 1;
+    /* Takes up less space, e.g., 33% */
+    min-width: 220px;
+    /* Minimum width for the image container */
+    text-align: center;
+    /* Center the image if container is wider */
+}
+
+.section-2 .right-grid img {
+    max-width: 100%;
+    height: auto;
+    max-height: 280px;
+    /* Max height for the image */
+    border-radius: 50%;
+    /* Circular image */
+    border: 6px solid #ffffff;
+    /* White border around the image */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    /* Softer shadow for the image */
+    object-fit: cover;
+    /* Ensures the image covers the area well if it's not perfectly square */
+}
+
+
+.project-list,
+.Certificate {
+    /* grid-column is now handled by .main-content > div[class] */
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
+    gap: 25px;
+    /* Spacing between project items and the view-more div */
+    align-items: stretch;
+    /* Make all items in a row (cards) the same height */
+}
+
+.Projects .heading,
+.Certificate .heading {
+    /* These are for index.html sections */
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+    /* Add some space below the heading */
+    font-size: 20px;
+    /* Adjust font size as needed */
+    color: #2c3e50;
+    /* Match heading color */
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+.Certificate .heading { /* Specific to index.html certificate section heading */
+    margin-bottom: -10px;
+}
+
+.project-item {
+    flex: 1 1 280px;
+    /* Grow, shrink, with a preferred basis of 280px. Adjust as needed. */
+    min-width: 260px;
+    /* Prevent items from becoming too small */
+    background-color: #fdfdfd;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    /* Stack h3, p, a vertically */
+}
+
+.project-item h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: #2c3e50;
+    /* Dark color for heading, matches navbar theme */
+}
+
+.project-item p {
+    flex-grow: 1;
+    /* Allows paragraph to take available space, pushing link down */
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #444;
+}
+
+.project-item a,
+.view-more a {
+    display: block;
+    /* Changed to block for better button behavior */
+    text-decoration: none;
+    background-color: #3498db;
+    /* Accent color from navbar hover */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-weight: 500;
+    margin-top: auto;
+    /* Pushes the button to the bottom of the .project-item card */
+}
+
+.project-item a:hover,
+.view-more a:hover {
+    background-color: #2980b9;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+}
+
+.view-more {
+    /* As a flex item in .Projects, it will naturally be on the same row/flow */
+    flex-grow: 0;
+    /* Don't allow it to grow like project-items */
+    flex-shrink: 0;
+    /* Don't allow it to shrink if space is tight */
+    flex-basis: auto;
+    /* Its width will be determined by its content (the 'a' tag) */
+    display: flex;
+    /* Helps in aligning the 'a' tag if .view-more itself gets padding/border */
+    align-items: center;
+    /* Vertically center the button if items in the row have varying heights */
+    /* If it needs to be full width when it wraps to a new line: */
+    /* width: 100%; justify-content: center; margin-top: 10px; */
+}
+
+/* Add this to your c:\Users\NIPA\Desktop\Portfolio\style.css file */
+
+.education-skills-row {
+    display: flex;
+    /* Enables flexbox layout */
+    justify-content: space-between;
+    /* Distributes space between items. You can also use space-around or other values. */
+    gap: 20px;
+    /* Optional: Adds some space between the Education and Skill sections */
+    margin-bottom: 20px;
+    /* Optional: Adds some space below this row */
+}
+
+.education-skills-row .Education,
+.education-skills-row .Skill {
+    flex: 1;
+    /* Allows both sections to grow and take up available space equally */
+    /* Alternatively, you could set a specific width, e.g., width: 48%; to leave space for the gap */
+    padding: 15px;
+    /* Optional: Adds some internal padding to each section */
+    border: 1px solid #eee;
+    /* Optional: Adds a light border for visual separation */
+    border-radius: 8px;
+    /* Optional: Rounds the corners */
+}
+
+/* You might want to adjust the heading margins within these sections if needed */
+.education-skills-row .Education .heading h2,
+.education-skills-row .Skill .heading h2 {
+    margin-top: 0;
+}
+
+/* Add these styles to c:\Users\NIPA\Desktop\Portfolio\style.css */
+
+.Contact-Me .heading h2 {
+    text-align: center;
+    color: #2c3e50;
+    /* Consistent heading color */
+    margin-bottom: 25px;
+    /* Space below heading */
+    font-size: 1.8rem;
+    /* Slightly larger heading for this section */
+}
+
+.Contact-Me form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between form groups */
+    padding: 0 200px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    /* Darker label color for readability */
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    /* Use the body's font */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fdfdfd;
+    /* Slightly off-white background for inputs */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    /* Accent color on focus */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    /* Subtle glow effect */
+}
+
+.form-group textarea {
+    resize: vertical;
+    /* Allow vertical resizing, disable horizontal */
+    min-height: 100px;
+    /* Minimum height for textarea */
+}
+
+.Contact-Me button[type="submit"] {
+    background-color: #3498db;
+    /* Accent color from navbar hover */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+    /* Align button to the start of the flex container if form is not full width */
+    /* Or use align-self: center; to center it */
+    margin-top: 10px;
+    /* Some space above the button */
+}
+
+.Contact-Me button[type="submit"]:hover {
+    background-color: #2980b9;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+}
+
+/* Responsive adjustments for the form if needed */
+@media (max-width: 600px) {
+    .Contact-Me form {
+        gap: 15px;
+    }
+
+    .Contact-Me button[type="submit"] {
+        align-self: stretch;
+        /* Make button full width on smaller screens */
+    }
+}
+
+/* Styles for Certificate.html Page */
+
+/* Heading style for the main title on certificate.html */
+.CertificatesPage .heading h1 {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    color: #2c3e50; /* Consistent with other headings */
+    margin-top: 0; /* Assumes parent (.CertificatesPage) has padding from .main-content > div[class] */
+    margin-bottom: 30px; /* Space before the certificate grid */
+    text-align: center;
+}
+
+/* Grid for certificates on certificate.html */
+.certificates-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Spacing between cards */
+    align-items: stretch; /* Ensures cards in the same row have equal height */
+    justify-content: center; /* Center cards if they don't fill the row */
+}
+
+/* Individual certificate card styling */
+.certificate-card {
+    flex: 1 1 300px; /* Grow, shrink, with a preferred basis of 300px */
+    min-width: 280px; /* Minimum width before wrapping */
+    max-width: 350px; /* Maximum width for a card, prevents them from getting too wide */
+    background-color: #fdfdfd; /* Slightly off-white card background */
+    border: 1px solid #e9e9e9; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07); /* Subtle shadow */
+    display: flex;
+    flex-direction: column; /* Stack image, content, and link vertically */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    overflow: hidden; /* Ensures image respects border-radius */
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+.certificate-card img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Maximum height for the certificate image */
+    object-fit: cover; /* Cover the area, may crop if aspect ratio differs */
+    /* border-bottom: 1px solid #e0e0e0; /* Optional separator line */
+}
+
+.certificate-card .card-content {
+    padding: 20px; /* Padding inside the card, below the image */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows this content area to grow, pushing the link to the bottom */
+}
+
+.certificate-card .card-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* Space after the certificate title */
+    font-size: 1.20rem; /* Title font size */
+    color: #2c3e50; /* Title color */
+    line-height: 1.4; /* Line height for readability */
+}
+
+/* Style for the "View Certificate" link, similar to .project-item a */
+.certificate-card .card-content a {
+    display: block; /* Make it a block element */
+    text-decoration: none;
+    background-color: #3498db; /* Accent color */
+    color: white; /* Text color */
+    padding: 10px 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    text-align: center; /* Center text in button */
+    font-weight: 500; /* Font weight */
+    margin-top: auto; /* Pushes the button to the bottom of the .card-content */
+    align-self: stretch; /* Makes button take full width of .card-content padding box */
+}
+
+.certificate-card .card-content a:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
