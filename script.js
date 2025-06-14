@@ -92,3 +92,61 @@
     }
 
 })();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenuContainer = document.querySelector('.nav-right'); // Target the container
+
+    if (navToggle && navMenuContainer) {
+        navToggle.addEventListener('click', () => {
+            navMenuContainer.classList.toggle('nav-menu-visible');
+            const isExpanded = navMenuContainer.classList.contains('nav-menu-visible');
+            navToggle.setAttribute('aria-expanded', isExpanded);
+            navToggle.classList.toggle('open'); // For hamburger icon animation
+        });
+
+        // Optional: Close menu when a link is clicked
+        document.querySelectorAll('.nav-right ul a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenuContainer.classList.contains('nav-menu-visible')) {
+                    navMenuContainer.classList.remove('nav-menu-visible');
+                    navToggle.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+});
+
+
+// Image Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption");
+    const closeModal = document.getElementsByClassName("close-modal")[0];
+
+    document.querySelectorAll('.work-popup-img').forEach(img => {
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+    });
+
+    if (closeModal) {
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    
+});
